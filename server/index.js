@@ -39,38 +39,41 @@ app.get("/view-map",(req,res) => {
     res.sendFile(`${__dirname}/public/map.html`);
 });
 
+app.get("/sign_up_success",(req,res) => {
+    console.log(__dirname);
+    res.sendFile(`${__dirname}/public/sign_up_success.html`);
+});
+
 
 // use JWT auth to secure the api
-app.use(jwt());
+// app.use(jwt());
 // api routes
 app.use('/users', require('./app/controller/user.controller'));
 // global error handler
 app.use(errorHandler);
 
-// Test db string. 
-const userdb = require('./utils/db.js').User;
-app.get("/testdb", (req, res) => {
-    if (req.body.email &&
-        req.body.username &&
-        req.body.password &&
-        req.body.passwordConf) {
-        var userData = {
-          email: req.body.email,
-          username: req.body.username,
-          password: req.body.password,
-        }
-        //use schema.create to insert data into the db
-        userdb.create(userData, function (err, user) {
-          if (err) {
-            return next(err)
-          } else {
-            return res.redirect('/');
-          }
-        });
-      }
-})
+// Sign Up =))
+const mongoose = require('mongoose');
+var db=mongoose.connection; 
+app.post('/sign_up', function(req,res){ 
+    var phone = req.body.phone;
+    var pass = req.body.password;
+  
+    var data = { 
+        "phone" : phone ,
+        "password" : pass, 
+    } 
+
+    db.collection('Users').insertOne(data,function(err, collection){ 
+        if (err) throw err; 
+        console.log("Record inserted Successfully"); 
+    }); 
+          
+    return res.redirect('sign_up_success.html'); 
+}) 
 
 
+// Listen
 app.listen(PORT,function(){
     console.log("UP AND RUNNING ON PORT",PORT, "not PORT 80");
 })
