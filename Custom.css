@@ -1,0 +1,12 @@
+.bg-primary-color{
+    background: #EF5D52;
+}
+.bg-secondary-color{
+    background: #F88748;
+}
+.avatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
