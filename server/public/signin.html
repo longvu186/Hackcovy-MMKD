@@ -25,10 +25,10 @@
       <div class="section section-signup" style="background-image: url('assets/img/donate.jpg'); background-size: cover; background-position: top center; min-height: 700px;">
         <div class="container">
           <div class="row">
-            <div class="card card-signup form" id='signup'>
+            <div class="card card-signup form" id='signin'>
               <form class="form" method="" action="">
                 <div class="card-header text-center">
-                  <h3 class="card-title title-up">Đăng ký</h3>
+                  <h3 class="card-title title-up">Đăng nhập</h3>
                   <div class="social-line">
                     <a href="#pablo" class="btn btn-neutral btn-facebook btn-icon btn-round">
                       <i class="fab fa-facebook-square"></i>
@@ -56,24 +56,18 @@
                         <i class="now-ui-icons text_caps-small"></i>
                       </span>
                     </div>
-                    <input type="text" placeholder="Mật khẩu" class="form-control" />
+                    <input type="password" placeholder="Mật khẩu" class="form-control" />
                   </div>
-                  <div class="input-group no-border">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="now-ui-icons ui-1_email-85"></i>
-                      </span>
-                    </div>
-                    <input type="text" class="form-control" placeholder="Nhập lại mật khẩu">
-                  </div>
+                  <p id="msg"></p>
                 </div>
                 <div class="card-footer text-center">
-                  <a href="#pablo" class="btn btn-neutral btn-round btn-lg">Xác nhận</a>
+                  <a onclick="signin()" class="btn btn-neutral btn-round btn-lg">Xác nhận</a>
                 </div>
+              </form>
             </div>
           </div>
           <div class='container'>
-            <center><a style="font-weight:bold;color:white" href="signup.html">Đăng ký</a><a style="font-weight:bold;color:white" href="signin.html">/Đăng nhập</a></center>
+            <center><a style="font-weight:bold;color:white" href="signup.html">Đăng ký</a></center>
           </div>
           <!-- <div class="col text-center">
             <a href="examples/login-page.html" class="btn btn-outline-default btn-round btn-white btn-lg" target="_blank">View Login Page</a>
@@ -81,6 +75,19 @@
         </div>
       </div>
   </div>
+  <script>
+    function signin(){
+      const Http = new XMLHttpRequest();
+      const url='http://localhost/auth/login';
+      Http.open("GET", url);
+      Http.send();
+
+      Http.onreadystatechange = (e) => {
+        response = JSON.parse(Http.responseText);
+        console.log(response);
+      }
+    }
+  </script>
 </body>
 
 </html>

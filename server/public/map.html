@@ -62,7 +62,12 @@
     ]
     var locations = [
       ['Ở kia kìa', 21.0142098,105.8008167, 1],
-      ['Ở đây này', 21.0153727,105.8028285, 2],
+      ['Ở kia kìa', 21.0152098,105.8008167, 1],
+      ['Ở kia kìa', 21.0162098,105.8008167, 1],
+      ['Ở kia kìa', 21.0172098,105.8008167, 1],
+      ['Ở kia kìa', 21.0182098,105.8008167, 1],
+      ['Ở kia kìa', 21.0192098,105.8008167, 1],
+      ['Ở đây này', 21.0123727,105.8028285, 2],
     ];
 
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -83,7 +88,9 @@
 
       google.maps.event.addListener(poor, 'click', (function(marker, i) {
         return function() {
-          infowindow.setContent(names[i][0]+locations[i][0]);
+          alert(i);
+          console.log(names[i][0]);
+          infowindow.setContent(names[i]);
           infowindow.open(map, poor);
         }
       })(poor, i));
