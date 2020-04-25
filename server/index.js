@@ -60,7 +60,7 @@ app.post('/sign_up', function(req,res){
     var pass = req.body.password;
   
     var data = { 
-        "phone" : phone ,
+        "phone" : phone,
         "password" : pass, 
     } 
 
