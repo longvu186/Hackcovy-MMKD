@@ -43,6 +43,9 @@
       #latlng {
         width: 225px;
       }
+      icon: {                             
+        url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"                           
+      }
     </style>
   </head>
   <body>
@@ -70,20 +73,37 @@
 
     var infowindow = new google.maps.InfoWindow();
 
-    var marker, i;
+    var poor,donate, i;
 
     for (i = 0; i < locations.length; i++) {  
-      marker = new google.maps.Marker({
+      poor = new google.maps.Marker({
         position: new google.maps.LatLng(locations[i][1], locations[i][2]),
         map: map
       });
 
-      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+      google.maps.event.addListener(poor, 'click', (function(marker, i) {
         return function() {
           infowindow.setContent(names[i][0]+locations[i][0]);
-          infowindow.open(map, marker);
+          infowindow.open(map, poor);
         }
-      })(marker, i));
+      })(poor, i));
+    }
+
+    for (i = 0; i < locations.length; i++) {  
+      donate = new google.maps.Marker({
+        icon: {
+          url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+        },
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(donate, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(names[i][0]+locations[i][0]);
+          infowindow.open(map, donate);
+        }
+      })(donate, i));
     }
     }
     </script>
