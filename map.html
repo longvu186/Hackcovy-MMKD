@@ -90,5 +90,11 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJJvoKT92AG3Wjzcy6uOtJylFZkTHYahA&callback=initMap">
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+      $.get('https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyAJJvoKT92AG3Wjzcy6uOtJylFZkTHYahA', function(responseText) {
+      console.log(responseText);
+  });
+  </script>
   </body>
 </html>
